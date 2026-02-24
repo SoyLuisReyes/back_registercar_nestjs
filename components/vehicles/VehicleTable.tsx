@@ -2,6 +2,10 @@ import { Vehicle } from '@/src/schemas';
 
 
 export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
+
+  console.log(vehicles);
+  
+
   return (
     <div className="overflow-x-auto p-4">
       <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -31,7 +35,7 @@ export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
                   {vehicle.type}
                 </span>
               </td>
-              <td className="px-6 py-4 font-mono text-gray-600">{vehicle.type}</td>
+              <td className="px-6 py-4 font-mono text-gray-600">{vehicle.plate}</td>
             </tr>
           ))}
         </tbody>
