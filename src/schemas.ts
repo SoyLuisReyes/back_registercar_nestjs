@@ -9,3 +9,4 @@ export const VehicleSchema = z.object({
 })
 
 export type Vehicle = z.infer<typeof VehicleSchema>
+export const VehiclesResponseSchema = z.array(VehicleSchema)
