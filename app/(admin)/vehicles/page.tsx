@@ -1,5 +1,7 @@
 import VehicleTable from '@/components/vehicles/VehicleTable'
 import { VehicleSchema, VehiclesResponseSchema } from '../../../src/schemas'
+import AdminLayout from '../layout'
+import Link from 'next/link'
 
 async function getVehicles() {
   const url = `${process.env.API_URL}/vehicles`
@@ -15,8 +17,11 @@ export default async function VehiclesPage() {
   
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-6">Administración de Vehículos</h1>
 
+      <Link
+        href='/vehicles/new'
+        className='rounded bg-amber-400 font-bold py-2 px-10'
+      >Nuevo Vehiculo</Link>
       {/* Renderizado del componente */}
       <VehicleTable vehicles={vehicles}/>
 

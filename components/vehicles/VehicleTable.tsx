@@ -8,6 +8,7 @@ export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
 
   return (
     <div className="overflow-x-auto p-4">
+      <h1 className="text-2xl font-bold mb-6">Administración de Vehículos</h1>
       <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
         <thead className="bg-gray-50 text-left text-gray-600 uppercase text-xs font-semibold">
           <tr>
