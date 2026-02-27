@@ -1,4 +1,5 @@
 import Navbar from '@/components/ui/Navbar';
+import ToastNotification from '@/components/ui/ToastNotification';
 
 export default function AdminLayout({
   children,
@@ -6,11 +7,15 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Navbar />
-      <main className="max-w-7xl mx-auto py-6">
-        {children}
-      </main>
-    </div>
+    <>
+      <div className="min-h-screen bg-gray-100">
+        <Navbar />
+        <main className="max-w-7xl mx-auto py-6">
+          {children}
+        </main>
+      </div>
+      <ToastNotification/>
+    </>
+
   );
 }

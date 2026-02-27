@@ -2,7 +2,8 @@
 
 import { ActionStateType, addVehicle } from "@/actions/add-vehicle-actions"
 import { useRouter } from "next/navigation"
-import { useActionState } from "react"
+import { useActionState, useEffect } from "react"
+import { toast } from "react-toastify"
 
 
 export default function AddVehicleForm ({children} : {children : React.ReactNode}) {
@@ -16,6 +17,17 @@ export default function AddVehicleForm ({children} : {children : React.ReactNode
     }
 
    const [state, dispatch] = useActionState(addVehicle , initialState)
+
+   useEffect(() => {
+    if(state.errors){
+        state.errors.forEach(error => toast.error(error))
+    }
+    if (state.success) {
+        toast.success(state.success)
+        router.push('/vehicles')
+    }
+   }, [state])
+   
 
   return (
     <form

@@ -23,11 +23,11 @@ export const VehicleSchema = z.object({
 // SCHEMA PARA LA VALIDACION DEL FORMULARIO AL CREAR VEHICULO
 export const VehicleFormSchema = z.object({
     model: z.string()
-        .min(1, {message: 'El Model no puede ir vacio'}),
+        .min(1, {message: 'El modelo no puede ir vacio'}),
     type: z.string()
-        .min(1, { message: 'El Tipo de Vehiculo no puede ir vacio'}),
+        .min(1, { message: 'El tipo de vehiculo no puede ir vacio'}),
     plate: z.string()
-        .min(1, {message: 'EL numero de Placa no puede ir vacio'})
+        .min(1, {message: 'EL número de placa no puede ir vacio'})
 })
 
 
