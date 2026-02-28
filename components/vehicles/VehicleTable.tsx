@@ -1,4 +1,5 @@
 import { Vehicle } from '@/src/schemas';
+import Link from 'next/link';
 
 
 export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
@@ -16,6 +17,7 @@ export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
             <th className="px-6 py-3 border-b">Modelo</th>
             <th className="px-6 py-3 border-b">Tipo</th>
             <th className="px-6 py-3 border-b">Placa</th>
+            <th className="px-6 py-3 border-b">Acciones</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
@@ -37,6 +39,15 @@ export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
                 </span>
               </td>
               <td className="px-6 py-4 font-mono text-gray-600">{vehicle.plate}</td>
+              <td className="px-6 py-4 text-gray-600">
+                <div className='flex gap-5 justify-end items-center'>
+                  <Link
+                    className="text-indigo-600 hover:text-indigo-800"
+                    href={`vehicles/${vehicle.id}/edit`}
+                  > Editar <span className='sr-only'>, {vehicle.model} </span>
+                  </Link>
+                </div>
+              </td>
             </tr>
           ))}
         </tbody>

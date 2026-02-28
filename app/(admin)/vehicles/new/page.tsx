@@ -2,7 +2,7 @@ import Heading from "@/components/ui/Heading";
 import ToastNotification from "@/components/ui/ToastNotification";
 import AddVehicleForm from "@/components/vehicles/AddVehicleForm";
 
-import ProductForm from "@/components/vehicles/ProductForm";
+import ProductForm from "@/components/vehicles/VehicleForm";
 
 
 export default function NewVehiclePage() {

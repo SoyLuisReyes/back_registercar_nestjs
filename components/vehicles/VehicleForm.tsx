@@ -2,7 +2,7 @@ import { Vehicle } from "@/src/schemas";
 
 // Suponiendo que tienes una función para traer los tipos si vinieran de la DB, 
 // o simplemente los definimos aquí.
-const vehicleTypes = ["Sedan", "Camioneta", "Microbus", "Motocicleta"];
+//const vehicleTypes = ["Sedan", "Camioneta", "Microbus", "Motocicleta"];
 
 export default async function VehicleForm({ vehicle }: { vehicle?: Vehicle }) {
   return (
@@ -32,9 +32,9 @@ export default async function VehicleForm({ vehicle }: { vehicle?: Vehicle }) {
           defaultValue={vehicle?.type}
         >
           <option value="">Seleccionar Tipo</option>
-          {vehicleTypes.map((type) => (
-            <option key={type} value={type}>
-              {type}
+          {vehicle.map((vehicle) => (
+            <option key={vehicle.id} value={vehicle.id}>
+              {vehicle.type}
             </option>
           ))}
         </select>
