@@ -1,13 +1,30 @@
 "use client"
 import { UpdatedVehicle } from '@/actions/updated-vehicle-actions'
-import { useActionState } from 'react'
+import { useParams, useRouter } from 'next/navigation'
+import { useActionState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 
 export default function EditVehicleForm ({ children }: { children: React.ReactNode }) {
 
-  const [state, dispatch] = useActionState(UpdatedVehicle, {
+
+  const router = useRouter()
+  const { id } = useParams<{id: string}>()
+
+  const updatedVehicleWithId = UpdatedVehicle.bind(null, +id)
+  const [state, dispatch] = useActionState(updatedVehicleWithId, {
     errors: [],
     success: ''
   })
+
+    useEffect(() => {
+    if (state.errors) {
+      state.errors.forEach(error => toast.error(error))
+    }
+    if (state.success) {
+      toast.success(state.success)
+      router.push('/vehicles')
+    }
+  }, [state])
 
   return (
     <form 
