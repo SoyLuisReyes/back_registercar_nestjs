@@ -1,7 +1,14 @@
-import React from 'react'
+type ActionStateType = {
+  errors: string[],
+  success: string
+}
 
-export const updated-vehicle-actions = () => {
-  return (
-    <div>updated-vehicle-actions</div>
-  )
+export async function UpdatedVehicle ( prevState: ActionStateType, formData: FormData) {
+
+  console.log('desde updatevehicle');
+  
+  return  {
+    errors: [],
+    success: 'Vehiculo Actualizado Correctamente'
+  }
 }

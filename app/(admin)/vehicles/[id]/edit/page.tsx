@@ -4,7 +4,7 @@ import VehicleForm from '@/components/vehicles/VehicleForm'
 import { VehicleSchema } from '@/src/schemas'
 import { notFound } from 'next/navigation'
 
-async function  getVehicles(id: string) {
+async function  getVehicles(id: string){
     const url = `${process.env.API_URL}/vehicles/${id}`
     const req = await fetch(url)
     const json = await req.json()
@@ -22,7 +22,7 @@ type Params = Promise<{id: string}>
 export default async function EditProductPage({params} : {params : Params}) {
     const { id } = await params
     const vehicle = await getVehicles(id)
-    console.log(vehicle);
+    //console.log(vehicle);
     
   return (
     <> 

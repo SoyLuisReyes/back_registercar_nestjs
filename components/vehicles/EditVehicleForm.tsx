@@ -1,9 +1,18 @@
-import React from 'react'
+"use client"
+import { UpdatedVehicle } from '@/actions/updated-vehicle-actions'
+import { useActionState } from 'react'
 
 export default function EditVehicleForm ({ children }: { children: React.ReactNode }) {
+
+  const [state, dispatch] = useActionState(UpdatedVehicle, {
+    errors: [],
+    success: ''
+  })
+
   return (
     <form 
       className='space-y-5' 
+      action={dispatch}
       >
         {children}
         <input 
