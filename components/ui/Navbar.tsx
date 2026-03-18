@@ -8,7 +8,7 @@ export default function Navbar() {
 
   // Configuración de los links para fácil mantenimiento
   const navLinks = [
-    { name: 'Vehículos', href: '/admin/vehicles' },
+    { name: 'Vehículos', href: '/vehicles' },
     { name: 'Mantenimientos', href: '/admin/maintenance' },
     { name: 'Nuevo Registro', href: '/admin/maintenance/new' },
   ];
@@ -19,7 +19,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo o Título */}
           <div className="flex items-center">
-            <Link href="/admin/vehicles" className="flex-shrink-0 font-bold text-xl tracking-wider text-blue-400">
+            <Link href="/vehicles" className="flex-shrink-0 font-bold text-xl tracking-wider text-blue-400">
               GESTOR<span className="text-white">AUTO</span>
             </Link>
           </div>
