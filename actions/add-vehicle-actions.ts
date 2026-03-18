@@ -1,7 +1,6 @@
 "use server"
 
 import { ErrorResponseSchema, VehicleFormSchema } from "@/src/schemas"
-import { json, success } from "zod"
 
 export type ActionStateType = {
     errors: string[],
@@ -33,6 +32,8 @@ export async function addVehicle(prevState: ActionStateType, formData: FormData)
         },
         body: JSON.stringify(vehicle.data)
     })
+
+    const json = await req.json()
 
     if (!req.ok) {
         const errors = ErrorResponseSchema.parse(json)

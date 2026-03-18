@@ -1,5 +1,6 @@
+"use server"
+
 import { ErrorResponseSchema, Vehicle, VehicleFormSchema } from "@/src/schemas"
-import { success } from "zod"
 
 type ActionStateType = {
   errors: string[],
@@ -26,7 +27,7 @@ export async function UpdatedVehicle(vehicleId: Vehicle['id'], prevState: Action
   // si la validacion es correcta la enviamos a nuestra api
   const url = `${process.env.API_URL}/vehicles/${vehicleId}`
   const req = await fetch(url, {
-    method: 'PUT',
+    method: 'PUT',  
     headers: {
       'Content-Type': 'application/json'
     },
