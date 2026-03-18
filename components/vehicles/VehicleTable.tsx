@@ -1,5 +1,6 @@
 import { Vehicle } from '@/src/schemas';
 import Link from 'next/link';
+import DeleteVehicleForm from './DeleteVehicleForm';
 
 
 export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
@@ -46,6 +47,9 @@ export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
                     href={`vehicles/${vehicle.id}/edit`}
                   > Editar <span className='sr-only'>, {vehicle.model} </span>
                   </Link>
+                    <DeleteVehicleForm
+                            vehicleId={vehicle.id}
+                    />
                 </div>
               </td>
             </tr>
