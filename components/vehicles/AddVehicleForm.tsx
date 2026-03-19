@@ -37,7 +37,7 @@ export default function AddVehicleForm ({children} : {children : React.ReactNode
         <input 
             type="submit" 
             className="rounded bg-green-400 font-bold py-2 w-full cursor-pointer"
-            value="Agregar Producto"
+            value="Agregar Vehiculo"
         />
     </form>
   )

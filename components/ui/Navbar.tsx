@@ -9,7 +9,7 @@ export default function Navbar() {
   // Configuración de los links para fácil mantenimiento
   const navLinks = [
     { name: 'Vehículos', href: '/vehicles' },
-    { name: 'Mantenimientos', href: '/admin/maintenance' },
+    { name: 'Mantenimientos', href: 'maintenances/new' },
     { name: 'Nuevo Registro', href: '/admin/maintenance/new' },
   ];
 

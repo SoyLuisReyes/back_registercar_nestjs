@@ -5,7 +5,7 @@ import DeleteVehicleForm from './DeleteVehicleForm';
 
 export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
 
-  console.log(vehicles);
+  //console.log(vehicles);
   
 
   return (
