@@ -9,7 +9,7 @@ export default function NewVehiclePage() {
     <>
       <div className="max-w-2xl mx-auto bg-white p-8 mt-10 shadow-sm border border-gray-100 rounded-lg">
 
-        <Heading>Nuevo Producto</Heading>
+        <Heading>Nuevo Vehiculo</Heading>
         <AddVehicleForm >
           <ProductForm />
         </AddVehicleForm >
