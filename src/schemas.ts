@@ -51,6 +51,7 @@ export const MaintenanceFormSchema = z.object({
     vehicleId: z.coerce.number({ message: 'Vehiculo no valido' })    
 })
 
+export type Maintenance = z.infer<typeof MaintenanceSchema>
 
 export type Vehicle = z.infer<typeof VehicleSchema>
 export const VehiclesResponseSchema = z.array(VehicleSchema)
