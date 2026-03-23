@@ -32,12 +32,12 @@ export const VehicleFormSchema = z.object({
 
 // SCHEMA PARA LA VALIDACION DEL FORMULARIO AL CREAR MANTENIMIENTO
 export const MaintenanceSchema = z.object({
-    id: z.number,
-    name: z.string,
-    mileage: z.number,
-    cost: z.number,
-    image: z.string,
-    vehicleId: z.number
+    id: z.number(),
+    name: z.string(),
+    mileage: z.number(),
+    cost: z.number(),
+    image: z.string(),
+    vehicleId: z.number()
 })
 
 
