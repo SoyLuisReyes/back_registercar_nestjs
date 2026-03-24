@@ -1,6 +1,14 @@
+import { ActionStateType } from "@/actions/add-vehicle-actions"
+import { useRouter } from "next/navigation"
 
 export default function AddMaintenancesForm({children} : {children : React.ReactNode}) {
 
+    const router = useRouter()
+
+    const initialState: ActionStateType = {
+        errors: [],
+        success: ''
+    }
         
 
     return (
