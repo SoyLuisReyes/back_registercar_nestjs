@@ -9,7 +9,7 @@ export default async function VehicleForm({ vehicle }: { vehicle?: Vehicle }) {
     <>
       <div className="space-y-2">
         <label htmlFor="model" className="block font-medium">
-          Modelo del Vehículo
+          Modelo del Vehículo h
         </label>
         <input
           id="model"
