@@ -2,7 +2,7 @@ import { Vehicle } from "@/src/schemas";
 
 // Suponiendo que tienes una función para traer los tipos si vinieran de la DB, 
 // o simplemente los definimos aquí.ç
-const vehicleTypes = ["Sedan", "Camioneta", "Microbus", "Motocicleta"];
+const vehicleTypes = ["Sedan", "Camioneta", "Microbuss", "Motocicleta"];
 
 export default async function VehicleForm({ vehicle }: { vehicle?: Vehicle }) {
   return (
