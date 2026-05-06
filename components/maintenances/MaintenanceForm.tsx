@@ -11,7 +11,7 @@ async function getVehicles(){
 
 
 
-export default async function ManintenanceForm( {maintenance }: {maintenance: Maintenance}) {
+export default async function MaintenanceForm( {maintenance }: {maintenance?: Maintenance}) {
   
   const vehicle = await getVehicles()
   
@@ -51,8 +51,8 @@ export default async function ManintenanceForm( {maintenance }: {maintenance: Ma
           Costo
         </label>
         <input
-          id="mileage"
-          type="cost"
+          id="cost"
+          type="text"
           name="cost"
           placeholder="Ej. Toyota Hilux 2024"
           className="border border-gray-300 w-full p-2"

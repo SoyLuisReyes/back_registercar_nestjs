@@ -55,3 +55,4 @@ export type Maintenance = z.infer<typeof MaintenanceSchema>
 
 export type Vehicle = z.infer<typeof VehicleSchema>
 export const VehiclesResponseSchema = z.array(VehicleSchema)
+export const MaintenancesResponseSchema = z.array(MaintenanceFormSchema)

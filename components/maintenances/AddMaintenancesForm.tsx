@@ -1,5 +1,9 @@
-import { ActionStateType } from "@/actions/add-vehicle-actions"
+"use client"
+
+import { addMaintenance, ActionStateType  } from "@/actions/add-Maintenance-actions"
 import { useRouter } from "next/navigation"
+import { useActionState, useEffect } from "react"
+import { toast } from "react-toastify"
 
 export default function AddMaintenancesForm({children} : {children : React.ReactNode}) {
 
@@ -9,17 +13,28 @@ export default function AddMaintenancesForm({children} : {children : React.React
         errors: [],
         success: ''
     }
-        
+
+    const [state, dispatch] = useActionState(addMaintenance, initialState)
+    
+       useEffect(() => {
+        if(state.errors){
+            state.errors.forEach(error => toast.error(error))
+        }
+        if (state.success) {
+            toast.success(state.success)
+            router.push('/vehicles')
+        }
+       }, [state])
 
     return (
         <form
-         
+         action={dispatch}
         >
             {children}
             <input
                 type="submit"
                 className="rounded bg-green-400 font-bold py-2 w-full cursor-pointer"
-                value="Agregar Mantenimientox"
+                value="Agregar Mantenimiento"
             />
         </form>
     )
