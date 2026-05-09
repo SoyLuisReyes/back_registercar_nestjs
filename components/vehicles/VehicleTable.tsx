@@ -3,10 +3,10 @@ import Link from 'next/link';
 import DeleteVehicleForm from './DeleteVehicleForm';
 
 
-export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
+export default function VehicleTable({ vehicles }: { vehicles: Vehicle[] }) {
 
   //console.log(vehicles);
-  
+
 
   return (
     <div className="overflow-x-auto p-4">
@@ -33,7 +33,11 @@ export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
                   />
                 </div>
               </td>
-              <td className="px-6 py-4 font-medium text-gray-900">{vehicle.model}</td>
+              <td className="px-6 py-4 font-medium text-gray-900">
+                <Link href={`/vehicles/${vehicle.id}`} className="block w-full h-full hover:underline">
+                  {vehicle.model}
+                </Link>
+              </td>
               <td className="px-6 py-4 text-gray-600">
                 <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
                   {vehicle.type}
@@ -47,9 +51,9 @@ export default function VehicleTable({vehicles}: {vehicles : Vehicle[]}) {
                     href={`vehicles/${vehicle.id}/edit`}
                   > Editar <span className='sr-only'>, {vehicle.model} </span>
                   </Link>
-                    <DeleteVehicleForm
-                            vehicleId={vehicle.id}
-                    />
+                  <DeleteVehicleForm
+                    vehicleId={vehicle.id}
+                  />
                 </div>
               </td>
             </tr>
