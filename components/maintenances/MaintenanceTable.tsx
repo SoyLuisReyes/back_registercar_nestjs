@@ -1,10 +1,34 @@
-import { Maintenance} from '@/src/schemas';
+import { Maintenance, VehicleSchema } from '@/src/schemas';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
+// traer los datos del vehiculo
+async function getVehicle(id: string) {
+const res = await fetch(`${process.env.API_URL}/vehicles/${id}`);
+  return res.json();
+}
 
-export default function MaintenanceTable({maintenances}: {maintenances : Maintenance[]}) {
+// traer los mantenimientos friltrados por vehiculo
+async function getMaintenances(vehicleId: string) {
+  const res = await fetch(`${process.env.API_URL}/maintenances?vehicle_id=${vehicleId}`);
+  return res.json();
+}
 
-  
+// obtenemos el id via url
+type Params = Promise<{id: string}>
+
+// { maintenances }: { maintenances: Maintenance[] }
+export default async function MaintenanceTable({params} : {params : Params}) {
+
+const { id } = await params;
+
+  // Manejo de errores por si las promesas fallan
+  try {
+    const [vehicle, maintenances] = await Promise.all([
+      getVehicle(id),
+      getMaintenances(id)
+    ]);
+
   return (
     <div className="overflow-x-auto p-4">
       <h1 className="text-2xl font-bold mb-6">Administración de Mantenimiento</h1>
@@ -22,7 +46,7 @@ export default function MaintenanceTable({maintenances}: {maintenances : Mainten
 
             <tr key={maintenance.id} className="hover:bg-gray-50 transition-colors">
               <td className="px-6 py-4 font-medium text-gray-900">{maintenance.name}</td>
-              
+
               <td className="px-6 py-4 text-gray-600">
                 <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
                   {maintenance.mileage}

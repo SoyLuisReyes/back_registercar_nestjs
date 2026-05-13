@@ -1,7 +1,6 @@
 import Heading from "@/components/ui/Heading";
 import AddVehicleForm from "@/components/vehicles/AddVehicleForm";
-
-import ProductForm from "@/components/vehicles/VehicleForm";
+import VehicleForm from "@/components/vehicles/VehicleForm";
 
 
 export default function NewVehiclePage() {
@@ -11,7 +10,7 @@ export default function NewVehiclePage() {
 
         <Heading>Nuevo Vehiculo</Heading>
         <AddVehicleForm >
-          <ProductForm />
+          <VehicleForm />
         </AddVehicleForm >
 
 

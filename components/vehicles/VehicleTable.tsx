@@ -1,6 +1,7 @@
 import { Vehicle } from '@/src/schemas';
 import Link from 'next/link';
 import DeleteVehicleForm from './DeleteVehicleForm';
+import { id } from 'zod/locales';
 
 
 export default function VehicleTable({ vehicles }: { vehicles: Vehicle[] }) {
@@ -34,7 +35,7 @@ export default function VehicleTable({ vehicles }: { vehicles: Vehicle[] }) {
                 </div>
               </td>
               <td className="px-6 py-4 font-medium text-gray-900">
-                <Link href={`/vehicles/${vehicle.id}`} className="block w-full h-full hover:underline">
+                <Link href={`/maintenances/${vehicle.id}`} className="block w-full h-full hover:underline">
                   {vehicle.model}
                 </Link>
               </td>
