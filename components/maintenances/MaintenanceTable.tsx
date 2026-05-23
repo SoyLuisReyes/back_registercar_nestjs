@@ -1,72 +1,67 @@
-import { Maintenance, VehicleSchema } from '@/src/schemas';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { Maintenance } from '@/src/schemas';
 
-// traer los datos del vehiculo
-async function getVehicle(id: string) {
-const res = await fetch(`${process.env.API_URL}/vehicles/${id}`);
-  return res.json();
+// Definimos la interfaz de las Props que va a recibir la tabla
+interface MaintenanceTableProps {
+  maintenances: Maintenance[];
 }
 
-// traer los mantenimientos friltrados por vehiculo
-async function getMaintenances(vehicleId: string) {
-  const res = await fetch(`${process.env.API_URL}/maintenances?vehicle_id=${vehicleId}`);
-  return res.json();
-}
-
-// obtenemos el id via url
-type Params = Promise<{id: string}>
-
-// { maintenances }: { maintenances: Maintenance[] }
-export default async function MaintenanceTable({params} : {params : Params}) {
-
-const { id } = await params;
-
-  // Manejo de errores por si las promesas fallan
-  try {
-    const [vehicle, maintenances] = await Promise.all([
-      getVehicle(id),
-      getMaintenances(id)
-    ]);
-
+export default function MaintenanceTable({ maintenances }: MaintenanceTableProps) {
   return (
-    <div className="overflow-x-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">Administración de Mantenimiento</h1>
+    <div className="overflow-x-auto mt-4">
       <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-sm">
         <thead className="bg-gray-50 text-left text-gray-600 uppercase text-xs font-semibold">
           <tr>
             <th className="px-6 py-3 border-b">Concepto</th>
             <th className="px-6 py-3 border-b">Kilometraje</th>
             <th className="px-6 py-3 border-b">Costo</th>
-            <th className="px-6 py-3 border-b">Imagen </th>
+            <th className="px-6 py-3 border-b text-center">Imagen</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          {maintenances?.map((maintenance) => (
+          {maintenances && maintenances.length > 0 ? (
+            maintenances.map((maintenance) => (
+              <tr key={maintenance.id} className="hover:bg-gray-50 transition-colors">
+                {/* Concepto / Nombre del mantenimiento */}
+                <td className="px-6 py-4 font-medium text-gray-900">
+                  {maintenance.name}
+                </td>
 
-            <tr key={maintenance.id} className="hover:bg-gray-50 transition-colors">
-              <td className="px-6 py-4 font-medium text-gray-900">{maintenance.name}</td>
+                {/* Kilometraje */}
+                <td className="px-6 py-4 text-gray-600">
+                  <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-semibold">
+                    {maintenance.mileage.toLocaleString()} km
+                  </span>
+                </td>
 
-              <td className="px-6 py-4 text-gray-600">
-                <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
-                  {maintenance.mileage}
-                </span>
-              </td>
+                {/* Costo formateado en dólares */}
+                <td className="px-6 py-4 font-mono font-bold text-emerald-600">
+                  ${Number(maintenance.cost).toFixed(2)}
+                </td>
 
-              <td className="px-6 py-4 font-mono text-gray-600">{maintenance.cost}</td>
-
-
-              <td className="px-6 py-4">
-                <div className="relative h-12 w-20 overflow-hidden rounded-md border">
-                  <img
-                    src={maintenance.image}
-                    alt={maintenance.image}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
+                {/* Imagen del recibo o repuesto */}
+                <td className="px-6 py-4 flex justify-center">
+                  <div className="relative h-12 w-20 overflow-hidden rounded-md border bg-gray-50 flex items-center justify-center">
+                    {maintenance.image && maintenance.image !== 'default.svg' && maintenance.image !== 'null' ? (
+                      <img
+                        src={maintenance.image}
+                        alt={maintenance.name}
+                        className="object-cover w-full h-full"
+                      />
+                    ) : (
+                      <span className="text-[10px] text-gray-400 font-medium uppercase">Sin foto</span>
+                    )}
+                  </div>
+                </td>
+              </tr>
+            ))
+          ) : (
+            // Estado vacío por si el vehículo no registra nada aún
+            <tr>
+              <td colSpan={4} className="px-6 py-12 text-center text-gray-400 italic bg-gray-50">
+                No hay mantenimientos registrados para este vehículo todavía.
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>
